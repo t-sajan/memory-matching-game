@@ -1,14 +1,27 @@
-const cards = document.querySelectorAll('.memory-card');
+// Get all card elements by class
+const cards = document.querySelectorAll(".memory-card");
 
+// declare variables required
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+
+// declare variable for card flips
+let moves = 0;
+let counter = document.querySelector("#flips");
+
+// @description count player's moves
+function moveCounter() {
+  moves++;
+  counter.innerHTML = moves;
+}
 
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
 
-  this.classList.add('flip');
+  this.classList.add("flip");
+  moveCounter();
 
   if (!hasFlippedCard) {
     //first click
@@ -31,8 +44,8 @@ function checkForMatch() {
 }
 
 function disableCards() {
-  firstCard.removeEventListener('click', flipCard);
-  secondCard.removeEventListener('click', flipCard);
+  firstCard.removeEventListener("click", flipCard);
+  secondCard.removeEventListener("click", flipCard);
 
   resetBoard();
 }
@@ -41,8 +54,8 @@ function unflipCards() {
   lockBoard = true;
 
   setTimeout(() => {
-    firstCard.classList.remove('flip');
-    secondCard.classList.remove('flip');
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
 
     resetBoard();
   }, 500);
@@ -52,7 +65,7 @@ function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
-cards.forEach((card) => card.addEventListener('click', flipCard));
+cards.forEach((card) => card.addEventListener("click", flipCard));
 
 (function shuffle() {
   cards.forEach((card) => {
