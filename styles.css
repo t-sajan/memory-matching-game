@@ -25,7 +25,8 @@ body {
   /* background: radial-gradient(#6ce516, #89228d); */
 }
 .page-title {
-  color: #660000;
+  /* color: #660000; */
+  color: purple;
   margin-top: 0%;
   font-family: "Fontdiner", serif;
   font-weight: normal;
@@ -33,9 +34,10 @@ body {
   font-size: 6em;
 }
 .game-info {
-  color: #ffbb89;
+  /* color: #ffbb89; */
+  color: #bfd641;
   margin: auto;
-  /* word-spacing: 5px; */
+  word-spacing: 0.5px;
   font-family: "Fontdiner", serif;
   font-size: 2.5em;
 }
@@ -102,6 +104,7 @@ body {
   background: rgba(201, 197, 183, 0.9);
   font-family: "Nosifer", serif;
   transition: background-color 500ms, font-size 500ms;
+  cursor: pointer;
 }
 
 .overlay-text-small {
