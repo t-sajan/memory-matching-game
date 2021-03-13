@@ -110,7 +110,22 @@ body {
 .overlay-text-small {
   font-size: 0.3em;
 }
+.overlay-text-mini {
+  font-size: 0.2em;
+}
 
+.overlay-text-star {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  height: 100px;
+  width: 100px;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.overlay-text-star.hidden {
+  opacity: 0%;
+}
 .overlay-text.visible {
   display: flex;
   animation: overlay-grow 500ms forwards;

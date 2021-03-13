@@ -2,11 +2,19 @@ const cards = document.querySelectorAll(".memory-card");
 let lockBoard = false;
 let hasFlippedCard = false;
 let firstCard, secondCard;
-let counter = document.querySelector("#flips");
-let moves = 0;
+const counter = document.querySelector("#flips");
+let moves;
 
-cards.forEach((card) => card.addEventListener("click", flipCard));
-
+function reset() {
+  moves = 0;
+  counter.innerHTML = moves;
+  unmatchedCards = cards.length / 2;
+  // countdowntimer();
+  cards.forEach((card) => card.classList.remove("flip"));
+  cards.forEach((card) => card.addEventListener("click", flipCard));
+  // shuffle();
+  countdown = startCountdown();
+}
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
@@ -34,10 +42,18 @@ function checkForMatch() {
   isMatch ? disableCards() : unflipCards();
 }
 
+let unmatchedCards = cards.length / 2;
 function disableCards() {
+  unmatchedCards--;
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
   resetBoard();
+  console.log(unmatchedCards);
+  if (unmatchedCards == 0) {
+    setTimeout(() => {
+      victory();
+    }, 500);
+  }
 }
 
 function unflipCards() {
@@ -59,34 +75,46 @@ function ready() {
   overlays.forEach((overlay) => {
     overlay.addEventListener("click", () => {
       overlay.classList.remove("visible");
-      countdowntimer();
+      reset();
     });
   });
 }
 
-function countdowntimer() {
-  let timeleft = 200;
-  let downloadTimer = setInterval(function () {
-    if (timeleft <= 0) {
-      clearInterval(downloadTimer);
-      gameOver();
-    } else {
-      document.getElementById("time-remaining").innerHTML =
-        timeleft + " seconds remaining";
-    }
-    timeleft -= 1;
+function startCountdown() {
+  timeRemaining = 100;
+  return setInterval(() => {
+    this.timeRemaining--;
+    this.document.getElementById("time-remaining").innerHTML =
+      timeRemaining + " seconds remaining";
+    if (this.timeRemaining === 0) this.gameOver();
   }, 1000);
 }
 
 function gameOver() {
-  clearInterval(this.countdowntimer);
+  clearInterval(this.countdown);
   document.getElementById("game-over-text").classList.add("visible");
 }
 
-(function shuffle() {
+function victory() {
+  let rating = document.querySelectorAll(".overlay-text-star");
+  console.log(this.timeRemaining, rating);
+  clearInterval(this.countdown);
+  document.getElementById("victory-stats").innerHTML =
+    "Time Taken: " + this.timeRemaining + " sec";
+  if (moves > 16) {
+    rating[3].classList.add("hidden");
+  }
+  if (moves > 24) {
+    rating[2].classList.add("hidden");
+  }
+  document.getElementById("victory-text").classList.add("visible");
+}
+
+function shuffle() {
   cards.forEach((card) => {
     let randomPos = Math.floor(Math.random() * 12);
     card.style.order = randomPos;
   });
-  ready();
-})();
+}
+
+window.onload = ready();
