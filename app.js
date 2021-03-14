@@ -9,10 +9,9 @@ function reset() {
   moves = 0;
   counter.innerHTML = moves;
   unmatchedCards = cards.length / 2;
-  // countdowntimer();
   cards.forEach((card) => card.classList.remove("flip"));
   cards.forEach((card) => card.addEventListener("click", flipCard));
-  // shuffle();
+  shuffle();
   countdown = startCountdown();
 }
 function flipCard() {
@@ -99,12 +98,15 @@ function victory() {
   let rating = document.querySelectorAll(".overlay-text-star");
   console.log(this.timeRemaining, rating);
   clearInterval(this.countdown);
-  document.getElementById("victory-stats").innerHTML =
+
+  document.getElementById("victory-time").innerHTML =
     "Time Taken: " + this.timeRemaining + " sec";
-  if (moves > 16) {
+  document.getElementById("victory-moves").innerHTML = "No. of Flips: " + moves;
+
+  if (moves > 20) {
     rating[3].classList.add("hidden");
   }
-  if (moves > 24) {
+  if (moves > 40) {
     rating[2].classList.add("hidden");
   }
   document.getElementById("victory-text").classList.add("visible");

@@ -1,8 +1,4 @@
 @font-face {
-  font-family: "PressStart";
-  src: url("Fonts/PressStart2P-Regular.ttf");
-}
-@font-face {
   font-family: "Nosifer";
   src: url("Fonts/Nosifer-Regular.ttf");
 }
@@ -22,7 +18,7 @@ body {
   display: grid;
   /* margin: auto; */
   background: gray;
-  /* background: radial-gradient(#6ce516, #89228d); */
+  /* background: radial-gradient(#3e413b, #89228d); */
 }
 .page-title {
   /* color: #660000; */
@@ -111,7 +107,7 @@ body {
   font-size: 0.3em;
 }
 .overlay-text-mini {
-  font-size: 0.2em;
+  font-size: 0.15em;
 }
 
 .overlay-text-star {
@@ -120,11 +116,10 @@ body {
   height: 100px;
   width: 100px;
   justify-content: center;
-  perspective: 1000px;
 }
 
 .overlay-text-star.hidden {
-  opacity: 0%;
+  filter: brightness(0.1);
 }
 .overlay-text.visible {
   display: flex;
