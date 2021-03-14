@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Nosifer";
-  src: url("Fonts/Nosifer-Regular.ttf");
+  src: url("Assets/Fonts/Nosifer-Regular.ttf");
 }
 @font-face {
   font-family: "Fontdiner";
-  src: url("Fonts/FontdinerSwanky-Regular.ttf");
+  src: url("Assets/Fonts/FontdinerSwanky-Regular.ttf");
 }
 
 * {
