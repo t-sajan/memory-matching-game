@@ -1,8 +1,4 @@
 @font-face {
-  font-family: "PressStart";
-  src: url("Fonts/PressStart2P-Regular.ttf");
-}
-@font-face {
   font-family: "Nosifer";
   src: url("Fonts/Nosifer-Regular.ttf");
 }
@@ -20,12 +16,10 @@
 body {
   height: 100vh;
   display: grid;
-  /* margin: auto; */
   background: gray;
-  /* background: radial-gradient(#6ce516, #89228d); */
+  /* background: radial-gradient(#3e413b, #89228d); */
 }
 .page-title {
-  /* color: #660000; */
   color: purple;
   margin-top: 0%;
   font-family: "Fontdiner", serif;
@@ -34,7 +28,6 @@ body {
   font-size: 6em;
 }
 .game-info {
-  /* color: #ffbb89; */
   color: #bfd641;
   margin: auto;
   word-spacing: 0.5px;
@@ -46,7 +39,6 @@ body {
   width: 640px;
   height: 640px;
   margin: 50px auto;
-  /* margin: auto; */
   display: flex;
   flex-wrap: wrap;
   perspective: 1000px;
@@ -79,7 +71,7 @@ body {
   position: absolute;
   border-radius: 5px;
   backface-visibility: hidden;
-  /* -webkit-backface-visibility: hidden; */
+  -webkit-backface-visibility: hidden;
   background: linear-gradient(140deg, #eadedb 0%, #bc70a4 50%, #bfd641 75%);
 }
 
@@ -100,7 +92,6 @@ body {
   flex-direction: column;
   color: black;
   font-size: 7em;
-  /* background:linear-gradient(#0e7378, #9300a3) */
   background: rgba(201, 197, 183, 0.9);
   font-family: "Nosifer", serif;
   transition: background-color 500ms, font-size 500ms;
@@ -110,7 +101,21 @@ body {
 .overlay-text-small {
   font-size: 0.3em;
 }
+.overlay-text-mini {
+  font-size: 0.15em;
+}
 
+.overlay-text-star {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  height: 100px;
+  width: 100px;
+  justify-content: center;
+}
+
+.overlay-text-star.hidden {
+  filter: brightness(0.1);
+}
 .overlay-text.visible {
   display: flex;
   animation: overlay-grow 500ms forwards;
